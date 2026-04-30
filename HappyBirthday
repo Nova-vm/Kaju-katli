@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Special 🎁</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  overflow: hidden;
+  color: white;
+}
+
+h1 {
+  margin-top: 100px;
+  padding: 0 20px;
+}
+
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+  background: white;
+  color: #333;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#giftBox {
+  font-size: 80px;
+  cursor: pointer;
+  margin-top: 40px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hey you... yes YOU 👀</h1>
+<p>I found something special... but I’m not sure if it’s yours 🤔</p>
+
+<div id="giftBox">🎁</div>
+
+<script>
+const gift = document.getElementById("giftBox");
+
+let opened = false;
+
+gift.addEventListener("click", () => {
+  if (!opened) {
+    opened = true;
+
+    document.body.innerHTML = `
+      <div class="fadeIn">
+        <h1>Wait... this looks important 😳</h1>
+        <p>Only the birthday person should open this...</p>
+        <button onclick="reveal()">Open Anyway 😏</button>
+      </div>
+    `;
+  }
+});
+
+function reveal() {
+  document.body.innerHTML = `
+    <div class="fadeIn">
+      <h1>🎉 BOOM 🎉</h1>
+      <h2>Happiest Birthday to...</h2>
+      <h1>✨ The Most Amazing Person Ever ✨</h1>
+      <p>(Yeah, you know it's you 😉)</p>
+      <p>Wishing you laughter, love, and everything you secretly wished for 💖</p>
+      <div style="font-size:70px;">🎂🎈🎊</div>
+    </div>
+  `;
+
+  if (navigator.vibrate) {
+    navigator.vibrate([200,100,200,100,400]);
+  }
+}
+</script>
+
+</body>
+</html>
